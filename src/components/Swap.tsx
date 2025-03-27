@@ -37,7 +37,7 @@ const Swap = () => {
   const [activeCoin, setActiveCoin] = useState<string>("Aptos");
 
   return (
-    <div className="w-[536px] mx-auto my-30 rounded-xl  shadow-md">
+    <div className="w-[536px] mx-auto my-10 rounded-xl  shadow-md">
       {/* Chain Changing Buttons */}
       <div className="flex flex-row justify-between items-center -margin-[1px]">
         <div className="flex flex-row">

@@ -10,7 +10,7 @@ import MetaMask from "../../public/images/metamask-logo.svg";
 
 const SwapTopBar = () => {
   return (
-    <div className="flex justify-center items-center w-full fixed top-0 z-100">
+    <div className="flex justify-center items-center w-full top-0">
       <div className="flex flex-row gap-4 justify-between items-center w-full h-fit p-3 bg-topbar rounded-b-2xl">
         {/* amount */}
         <div className="flex flex-row justify-between text-sm items-center px-6 bg-topbarbutton rounded-2xl h-12">

@@ -15,3 +15,17 @@
   --color-tabs: #111213;
   
 }
+
+::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for WebKit browsers */
+}
+
+/* Hide scrollbar for Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for Internet Explorer and Edge */
+* {
+  -ms-overflow-style: none;
+}

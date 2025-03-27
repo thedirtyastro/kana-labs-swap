@@ -9,7 +9,7 @@ import Grid from "../../public/images/grid-01.svg";
 import Scales from "../../public/images/scales-02.svg";
 
 const Navbar = () => {
-  return <div className="bg-[#17181A] flex w-fit p-4 h-screen ">
+  return     <div className="fixed top-0 left-0 bg-topbar flex flex-col h-screen p-4">
     <div className="flex flex-col gap-10">
         <div className="flex justify-center items-center h-16 w-14">
             <Image src={Logo} alt="logo" />
