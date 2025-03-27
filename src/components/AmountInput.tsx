@@ -22,8 +22,8 @@ const AmountInput: React.FC<AmountInputProps> = ({ text }) => {
         <TokenChain />
       </div>
       <div className="flex flex-row justify-between items-center text-sm">
-        <span>USD 0</span>
-        <span>Balance -</span>
+      <span>USD<span className="font-bold ml-2">0</span></span>
+      <span>Balance -</span>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import Coins from "../../public/images/coins-03.svg";
 import Zap from "../../public/images/zap.svg";
@@ -6,9 +7,19 @@ import Settings from "../../public/images/settings-01.svg";
 import Disconnect from "../../public/images/Variant3-1.svg";
 import Copy from "../../public/images/Variant3.svg";
 import MetaMask from "../../public/images/metamask-logo.svg";
-
+import { motion } from "framer-motion";
 
 const SwapTopBar = () => {
+  const [copied, setCopied] = useState(false);
+
+  const walletAddress = "0xwalletaddresxyz";
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(walletAddress);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000); // Reset after 2s
+  };
+
   return (
     <div className="flex justify-center items-center w-full top-0">
       <div className="flex flex-row gap-4 justify-between items-center w-full h-fit p-3 bg-topbar rounded-b-2xl">
@@ -41,17 +52,46 @@ const SwapTopBar = () => {
           {/* wallet connection */}
           <div className="flex flex-row justify-between items-center py-3 px-4 gap-2 bg-topbarbutton rounded-2xl h-12">
             <Image src={MetaMask} alt="Meta mask logo" />
-            <div className="w-38 font-bold text-sm text-primary ">0xwalletaddresxyz</div>
+            <div className="w-38 font-bold text-sm text-primary">
+              {walletAddress}
+            </div>
+
             <div className="flex flex-row gap-2">
-              <Image src={Copy} alt="Copy" />
-              <Image src={Disconnect} alt="Disconnect" />
+              <motion.button
+                onClick={handleCopy}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="relative hover:cursor-pointer">
+                <Image src={Copy} alt="Copy" />
+                {copied && (
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    className="absolute top-[-25px] left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1">
+                    Copied!
+                  </motion.span>
+                )}
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
+                className="hover:cursor-pointer"
+                >
+                <Image src={Disconnect} alt="Disconnect" />
+                
+              </motion.button>
             </div>
           </div>
 
-          {/* settings */}
-          <div className=" p-3 bg-[#1D1E20] rounded-2xl h-12 flex justify-center items-center">
-            <Image src={Settings} alt="Settings" height={24} width={24} />
-          </div>
+          <button className="p-3 bg-[#1D1E20] rounded-2xl h-12 flex justify-center items-center hover:cursor-pointer">
+            <motion.div
+              whileHover={{ rotate: 90 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}>
+              <Image src={Settings} alt="Settings" height={24} width={24} />
+            </motion.div>
+          </button>
         </div>
       </div>
     </div>
