@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Logo from "../../public/images/kana-logo.svg";
 import CoinSwap from "../../public/images/coins-swap-01.svg";
 import BarChart from "../../public/images/bar-chart-square-01.svg";
@@ -17,7 +17,7 @@ type NavbarProps = {
 };
 
 const Navbar: React.FC<NavbarProps> = ({ activeSection, setActiveSection }) => {
-  const menuItems: { id: Section; icon: any }[] = [
+  const menuItems: { id: Section; icon: StaticImageData }[] = [
     { id: "swap", icon: CoinSwap },
     { id: "operps", icon: Scales },
     { id: "stacked", icon: CoinStacked },
