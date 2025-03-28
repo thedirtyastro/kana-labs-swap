@@ -123,26 +123,27 @@ const Table = () => {
 
   type SortOrder = "asc" | "desc";
 
-  function sortByKey(
+  function sortByKey<T extends keyof DataItem>(
     array: DataItem[],
-    key: keyof DataItem,
+    key: T,
     order: SortOrder = "asc"
   ): DataItem[] {
     return [...array].sort((a, b) => {
-      let valA: any = a[key];
-      let valB: any = b[key];
-
-      // Convert numeric values
-      if (!isNaN(Number(valA)) && !isNaN(Number(valB))) {
-        valA = Number(valA);
-        valB = Number(valB);
+      const valA = a[key];
+      const valB = b[key];
+  
+      if (typeof valA === "number" && typeof valB === "number") {
+        return order === "asc" ? valA - valB : valB - valA;
       }
-
-      if (valA < valB) return order === "asc" ? -1 : 1;
-      if (valA > valB) return order === "asc" ? 1 : -1;
+  
+      if (typeof valA === "string" && typeof valB === "string") {
+        return order === "asc" ? valA.localeCompare(valB) : valB.localeCompare(valA);
+      }
+  
       return 0;
     });
   }
+  
 
   const [sortData, setSortData] = useState<DataItem[]>(data);
 

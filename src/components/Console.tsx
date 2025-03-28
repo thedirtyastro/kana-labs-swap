@@ -7,7 +7,6 @@ import Message from "../../public/images/message-question-square.svg";
 import KanaButton from "./KanaButton";
 import CycleProfitLoss from "./CycleProfitLoss";
 import PayoffChart from "./PayoffChart";
-import { div } from "motion/react-client";
 
 const Console = () => {
   const [value, setValue] = useState("");

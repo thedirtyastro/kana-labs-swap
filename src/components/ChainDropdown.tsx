@@ -10,10 +10,7 @@ import Aptos from '../../public/images/aptos.svg';
 import Arbitrum from '../../public/images/arbitrum (1).svg';
 import Avalanche from '../../public/images/avalanche (1).svg';
 import Bsc from '../../public/images/bsc_2.svg';
-import Polygon from '../../public/images/polygon1.svg';
-import Solana from '../../public/images/solana.svg';
-import Sui from '../../public/images/sui-sui-logo (1).svg';
-import Zksync from '../../public/images/zksync.svg';
+
 
 type Coin = {
   name: string;
