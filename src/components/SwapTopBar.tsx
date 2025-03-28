@@ -1,12 +1,7 @@
 "use client";
-import React, { useState } from "react";
 import Image from "next/image";
-import Coins from "../../public/images/coins-03.svg";
-import Zap from "../../public/images/zap.svg";
 import Settings from "../../public/images/settings-01.svg";
-import Disconnect from "../../public/images/Variant3-1.svg";
-import Copy from "../../public/images/Variant3.svg";
-import MetaMask from "../../public/images/metamask-logo.svg";
+
 import { motion } from "framer-motion";
 import ProfileState from "./ProfileState";
 import PointState from "./PointState";

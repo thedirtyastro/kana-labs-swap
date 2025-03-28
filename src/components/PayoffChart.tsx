@@ -14,6 +14,11 @@ interface DataPoint {
   profit: number;
 }
 
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: { payload: DataPoint }[];
+}
+
 const data: DataPoint[] = [
   { price: 3400, profit: 0 },
   { price: 3450, profit: 0 },
@@ -23,10 +28,10 @@ const data: DataPoint[] = [
   { price: 3650, profit: 150 },
 ];
 
-const CustomTooltip = ({ active, payload }: any) => {
+const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
-      <div className=" p-2 flex flex-col gap-0 mb-50">
+      <div className="p-2 flex flex-col gap-0 mb-50">
         <p className="text-tiny">ETH Price now:</p>
         <span className="font-bold text-xs">{payload[0].payload.price}</span>
       </div>

@@ -1,10 +1,8 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
 import Selector from "../../public/images/chevron-selector-vertical.svg";
 
 const Table = () => {
-  const [showOrders, setShowOrders] = useState(true);
 
   const columns = [
     { name: "Time" },
