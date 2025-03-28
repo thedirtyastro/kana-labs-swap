@@ -131,7 +131,7 @@ const Swap = () => {
           </div>
 
           {/* Swap Button */}
-          <KanaButton />
+          <KanaButton  />
         </div>
       </div>
 
