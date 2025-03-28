@@ -1,15 +1,15 @@
 "use client";
 import Image from "next/image";
 import Selector from "../../public/images/chevron-selector-vertical.svg";
+import { useState } from "react";
 
 const Table = () => {
-
-  const columns = [
-    { name: "Time" },
-    { name: "Market" },
-    { name: "Side" },
-    { name: "Amount" },
-    { name: "Time till execution" },
+  const columns: { name: string; key: keyof DataItem }[] = [
+    { name: "Time", key: "time" },
+    { name: "Market", key: "position" },
+    { name: "Side", key: "side" },
+    { name: "Amount", key: "amount" },
+    { name: "Time till execution", key: "executionTime" },
   ];
 
   const data = [
@@ -103,42 +103,59 @@ const Table = () => {
       duration: "Minutes",
       img: "https://cryptologos.cc/logos/dogecoin-doge-logo.png",
     },
-    {
-      time: "7:30:40 PM",
-      market: "MATIC",
-      side: "Buy",
-      amount: "250",
-      status: "Closed",
-      executionTime: "02:20",
-      orderId: "67890123",
-      date: "12-Mar-24",
-      optionType: "Put",
-      position: "• Long",
-      tradeType: "LPO",
-      duration: "Hours",
-      img: "https://cryptologos.cc/logos/polygon-matic-logo.png",
-    },
-    {
-      time: "8:55:10 PM",
-      market: "BNB",
-      side: "Sell",
-      amount: "120",
-      status: "Open",
-      executionTime: "03:05",
-      orderId: "78901234",
-      date: "12-Mar-24",
-      optionType: "Call",
-      position: "• Short",
-      tradeType: "MKT",
-      duration: "Minutes",
-      img: "https://cryptologos.cc/logos/binance-coin-bnb-logo.png",
-    },
   ];
 
+  type DataItem = {
+    time: string;
+    market: string;
+    side: string;
+    amount: string;
+    status: string;
+    executionTime: string;
+    orderId: string;
+    date: string;
+    optionType: string;
+    position: string;
+    tradeType: string;
+    duration: string;
+    img: string;
+  };
+
+  type SortOrder = "asc" | "desc";
+
+  function sortByKey(
+    array: DataItem[],
+    key: keyof DataItem,
+    order: SortOrder = "asc"
+  ): DataItem[] {
+    return [...array].sort((a, b) => {
+      let valA: any = a[key];
+      let valB: any = b[key];
+
+      // Convert numeric values
+      if (!isNaN(Number(valA)) && !isNaN(Number(valB))) {
+        valA = Number(valA);
+        valB = Number(valB);
+      }
+
+      if (valA < valB) return order === "asc" ? -1 : 1;
+      if (valA > valB) return order === "asc" ? 1 : -1;
+      return 0;
+    });
+  }
+
+  const [sortData, setSortData] = useState<DataItem[]>(data);
+
+  const handleSort = (key: keyof DataItem, order: SortOrder = "asc") => {
+    const sortedArray = sortByKey([...sortData], key, order);
+    setSortData(sortedArray);
+  };
+
+  // Example usage:
   return (
     <div>
       <div className="flex flex-row h-12 text-xs bg-card border border-white/10 rounded-t-2xl">
-        <div className="px-6 bg-white/[6%] h-full items-center justify-center flex rounded-tl-2xl">
+        <div className="px-6 bg-white/[6%] text-white font-extrabold h-full items-center justify-center flex rounded-tl-2xl">
           Open Orders
         </div>
         <div className="px-6 h-full items-center justify-center flex">
@@ -148,11 +165,16 @@ const Table = () => {
           Trades
         </div>
       </div>
-      <table className="w-full bg-card border border-collapse rounded-b-2xl overflow-hidden  border-white/10">
-        <thead className="text-tiny bg-tabs border border-white/10 text-white">
-          <tr>
+      <table className="w-full px-4 bg-card  rounded-b-2xl overflow-hidden  table-fixed">
+        <thead className="text-tiny bg-tabs border border-white/10 text-tp ">
+          <tr className="px-4">
             {columns.map((col, index) => (
-              <th key={index} className="px-4 py-2 text-left">
+              <th
+                key={index}
+                className={`px-4 py-2 font-normal cursor-pointer text-left w-1/5 ${
+                  index === 0 ? "ml-4" : ""
+                }`}
+                onClick={() => handleSort(col.key)}>
                 {col.name}
                 <Image
                   src={Selector}
@@ -165,41 +187,46 @@ const Table = () => {
             ))}
           </tr>
         </thead>
-        <tbody >
-          {data.map((row, index) => (
-            <tr
-              key={index}
-              className={` ${
-                index === data.length - 1 ? " " : "border-b border-white/10"
-              }`}>
-              <td>
-                <div className="flex flex-col p-4 gap-1">
+
+        <tbody>
+          {sortData.map((row, index) => (
+            <tr key={index} className=" border border-white/10">
+              <td className="w-1/5">
+                <div className="flex flex-col ml-4 py-4 gap-1">
                   <span className="text-xs">{row.time}</span>
                   <span className="text-tiny">{row.date}</span>
                 </div>
               </td>
-              <td>
-                <div className="flex flex-col p-4 gap-1">
+              <td className="w-1/5">
+                <div className="flex flex-col ml-4 py-4 gap-1">
                   <div className="flex flex-row gap-1 items-center text-xs">
                     <img src={row.img} alt={row.market} className="h-3 w-3" />
                     <span>{row.market}</span>
                   </div>
                   <div className="text-tiny ">
-                    {row.optionType} - {row.position}
+                    {row.optionType}{" "}
+                    <span
+                      className={`text-tiny ${
+                        row.position === "• Long"
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}>
+                      {row.position}
+                    </span>
                   </div>
                 </div>
               </td>
-              <td>
-                <span className="text-xs">{row.side}</span>
+              <td className="w-1/5">
+                <span className="text-xs ml-4">{row.side}</span>
               </td>
-              <td>
-                <div className="flex flex-col p-4 gap-1">
+              <td className="w-1/5">
+                <div className="flex flex-col ml-4 py-4 gap-1">
                   <span className="text-xs">{row.amount}</span>
                   <span className="text-tiny">{row.tradeType}</span>
                 </div>
               </td>
-              <td>
-                <div className="flex flex-col p-4 gap-1">
+              <td className="w-1/5">
+                <div className="flex flex-col ml-4 py-4 gap-1">
                   <span className="text-xs">{row.executionTime}</span>
                   <span className="text-tiny">{row.duration}</span>
                 </div>

@@ -9,9 +9,9 @@ interface TopbarButtonProps {
 
 const TopbarButton: React.FC<TopbarButtonProps> = ({ leftIcon, text, rightIcon }) => {
   return (
-    <button className="flex items-center gap-2 px-6 py-2 rounded-2xl bg-topbarbutton ">
+    <button className="flex items-center justify-center gap-2 px-6  rounded-2xl bg-topbarbutton ">
       {leftIcon && <Image src={leftIcon} alt="Left Icon" width={20} height={20} />}
-      <span>{text}</span>
+      <span className='text-primary font-extrabold'>{text}</span>
       {rightIcon && <Image src={rightIcon} alt="Right Icon" width={20} height={20} />}
     </button>
   );

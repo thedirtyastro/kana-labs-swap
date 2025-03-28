@@ -57,7 +57,7 @@ const TimeLoader = () => {
           className="h-full rounded-full"
           animate={{ width: `${progress}%` }}
           transition={{ duration: 1 }}
-          style={{ background: progress >= 90 ? "#ff5e57" : "#2ED3B7" }}
+          style={{ background: "#2ED3B7" }}
         />
       </div>
 

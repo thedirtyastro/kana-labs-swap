@@ -37,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, setActiveSection }) => {
             <div
               key={item.id}
               className={`h-14 flex justify-center items-center cursor-pointer hover:bg-white/5 hover:rounded-2xl ${
-                activeSection === item.id ? "bg-white/10 rounded-2xl" : ""
+                activeSection === item.id ? "bg-white/10 rounded-2xl brightness-150" : ""
               }`}
               onClick={() => setActiveSection(item.id)}
             >

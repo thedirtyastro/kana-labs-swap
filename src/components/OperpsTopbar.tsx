@@ -21,7 +21,7 @@ const OperpsTopbar = () => {
 
         <div className="flex flex-row gap-2 ">
           <TopbarButton text="Faucet" leftIcon={Card} />
-          <TopbarButton text="Test Net" rightIcon={Down} leftIcon={Container} />
+          <TopbarButton text="Test net" rightIcon={Down} leftIcon={Container} />
           <PointState />
           <ProfileState size="small" />
           <button className="p-3.5 bg-topbarbutton rounded-2xl flex justify-center items-center hover:cursor-pointer">

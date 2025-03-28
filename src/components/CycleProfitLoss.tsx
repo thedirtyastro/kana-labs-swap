@@ -14,12 +14,12 @@ const CycleProfitLoss: React.FC<CycleProfitLossProps> = ({ title, percentage, am
 
   return (
     <div className='flex flex-col p-2 bg-card rounded-lg'>
-      <div className='flex flex-row justify-between text-xs'>
+      <div className='flex flex-row justify-between text-xs text-tp'>
         <span>{title}</span>
         <Image src={Info} alt='info' />
       </div>
       <div className='font-bold flex gap-2 flex-row'>
-        <span>{percentage}%</span>
+        <span className='text-white'>{percentage}%</span>
         <span className={isProfit ? 'text-priceup' : 'text-pricedown'}>
           ~${amount}
         </span>

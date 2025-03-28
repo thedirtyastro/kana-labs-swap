@@ -30,20 +30,19 @@ function TradingViewWidget() {
     container.current.appendChild(script);
   }, []);
 
-  return (
-    <div
-      className="tradingview-widget-container"
-      ref={container}
-      style={{
-        height: "361px",
-        width: "100%",
-        border: "1px solid rgba(255, 255, 255, 0.1)", // 10% opacity white
-        borderBottomLeftRadius: "16px",
-        borderBottomRightRadius: "16px",
-        overflow: "hidden",
-      }}
-    />
-  );
+  return    <div
+  className="tradingview-widget-container"
+  ref={container}
+  style={{
+    height: "361px",
+    width: "100%",
+    border: "0px", // 10% opacity white
+    borderBottomLeftRadius: "16px",
+    borderBottomRightRadius: "16px",
+    overflow: "hidden",
+  }}
+  
+/>
 }
 
 export default memo(TradingViewWidget);

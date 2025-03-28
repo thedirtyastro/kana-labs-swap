@@ -43,11 +43,12 @@ const Swap = () => {
     <div className="w-[536px] mx-auto my-10 rounded-xl flex flex-col gap-4 shadow-md">
       {/* Chain Changing Buttons */}
       <div className="flex flex-col">
-        <div className="flex flex-row justify-between items-center">
-          <div className="flex flex-row text-sm">
+        {/* toogle  */}
+        <div className="flex flex-row justify-between items-center z-10 mb-[-1px] ">
+          <div className="flex flex-row text-sm text-tp font-bold mt-[-1px]">
             <div
               className={`flex justify-between items-center flex-row px-6 py-4 border-x border-t border-white/10 w-fit rounded-t-2xl gap-2 cursor-pointer ${
-                !isCrossChain ? "bg-card" : "bg-tabs"
+                !isCrossChain ? "bg-card text-th border-b border-b-card" : "bg-tabs border-b border-white/10"
               }`}
               onClick={() => setIsCrossChain(false)}
             >
@@ -56,7 +57,7 @@ const Swap = () => {
             </div>
             <div
               className={`flex justify-between items-center flex-row px-6 py-4 border-x border-t border-white/10 w-fit rounded-t-2xl gap-2 cursor-pointer ${
-                isCrossChain ? "bg-card" : "bg-tabs"
+                isCrossChain ? "bg-card text-th  border-b border-b-card" : "bg-tabs border-b border-white/10"
               }`}
               onClick={() => setIsCrossChain(true)}
             >
@@ -76,7 +77,7 @@ const Swap = () => {
         <div className="bg-card border border-white/10 rounded-b-2xl rounded-tr-2xl flex flex-col gap-4 p-6">
           {/* Header */}
           <div className="flex flex-row justify-between items-center">
-            <span className="text-sm font-bold">
+            <span className="text-sm font-bold text-th">
               {isCrossChain ? "Cross-chain Swap" : "Same-chain Swap"}
             </span>
             <div className="flex flex-row gap-2">

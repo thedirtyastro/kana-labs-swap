@@ -76,8 +76,12 @@ const PayoffChart: React.FC = () => {
               />
             </svg>
           )}
+
+
         </LineChart>
+        
       </ResponsiveContainer>
+      
     </div>
   );
 };

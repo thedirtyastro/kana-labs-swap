@@ -28,7 +28,7 @@ const Input: React.FC<InputProps> = ({ placeholder }) => {
         placeholder={placeholder}
         value={value}
         onChange={handleChange}
-        className="border-b outline-none w-full text-xl py-2"
+        className="border-b outline-none w-full text-xl py-2 placeholder-tp"
       />
     </div>
   );

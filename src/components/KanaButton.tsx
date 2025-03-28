@@ -32,7 +32,7 @@ const KanaButton: React.FC<KanaButtonProps> = ({
 
   return (
     <button
-      className={`w-full ${styles[color].textColor} font-bold rounded-2xl py-4 px-6 border ${styles[color].border} ${styles[color].shadow} transition-all duration-300 ${styles[color].hoverShadow} hover:cursor-pointer`}>
+      className={`w-full ${styles[color].textColor} font-extrabold rounded-2xl py-4 px-6 border ${styles[color].border} ${styles[color].shadow} transition-all duration-300 ${styles[color].hoverShadow} hover:cursor-pointer`}>
       {text}
     </button>
   );

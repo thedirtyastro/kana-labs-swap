@@ -29,31 +29,41 @@ const TradingView = () => {
             initial={false}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           />
-          <div className="relative z-10 py-2 px-6 w-fit text-white">Long</div>
-          <div className="relative z-10 py-2 px-6 w-fit text-white">Short</div>
+          <div
+            className={`relative z-10 py-2 px-6 w-fit font-extrabold ${
+              isLong ? "text-white" : "text-ts"
+            }`}>
+            Long
+          </div>
+          <div
+            className={`relative z-10 py-2 px-6 w-fit font-extrabold ${
+              isLong ? "text-ts" : " text-white"
+            }`}>
+            Short
+          </div>
         </div>
       </div>
 
       {/* Trading Chart */}
       <div>
         <div className="flex flex-row justify-between p-2 border border-white/10 rounded-t-2xl bg-card items-center">
-          <span className="font-bold text-sm ml-2">Current Cycle</span>
+          <span className="font-bold text-sm ml-2 text-white">Current Cycle</span>
           <div className="flex flex-row gap-6">
             <div className="flex flex-col px-4 py-2">
-              <span className="text-xs ">Start Price</span>
-              <span className="font-bold text-sm">$1,234</span>
+              <span className="text-xs text-tp">Start Price</span>
+              <span className="font-bold text-sm text-white">$1,234</span>
             </div>
             <div className="flex flex-col px-4 py-2">
-              <span className="text-xs ">Breakeven</span>
-              <span className="font-bold text-sm">$1,234</span>
+              <span className="text-xs text-tp">Breakeven</span>
+              <span className="font-bold text-sm text-white">$1,234</span>
             </div>
             <div className="flex flex-col px-4 py-2">
-              <span className="text-xs ">Leverage</span>
-              <span className="font-bold text-sm">705x</span>
+              <span className="text-xs text-tp">Leverage</span>
+              <span className="font-bold text-sm text-white">705x</span>
             </div>
             <div className="flex flex-col px-4 py-2">
-              <span className="text-xs ">PnL</span>
-              <span className="font-bold text-sm">25%</span>
+              <span className="text-xs text-tp">PnL</span>
+              <span className="font-bold text-sm text-white">25%</span>
             </div>
           </div>
         </div>
@@ -61,12 +71,11 @@ const TradingView = () => {
         {/* Time Progress Bar */}
 
         <TimeLoader />
-        <div className="h-[361px] ">
+        <div className="h-[361px] border-b border-b-white/10 rounded-2xl ">
           <TradingViewWidget />
         </div>
       </div>
       <Table />
-
     </div>
   );
 };

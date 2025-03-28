@@ -22,15 +22,12 @@ type Coin = {
 };
 
 const coins: Coin[] = [
-  { name: 'Aptos', image: Aptos, token: 'APT' },
-  { name: 'Arbitrum', image: Arbitrum, token: 'ARB' },
-  { name: 'Avalanche', image: Avalanche, token: 'AVAX' },
-  { name: 'BSC', image: Bsc, token: 'BSC' },
-  { name: 'ETH', image: Etherum, token: 'ETH' },
-  { name: 'Polygon', image: Polygon, token: 'MATIC' },
-  { name: 'Solana', image: Solana, token: 'SOL' },
-  { name: 'Sui', image: Sui, token: 'SUI' },
-  { name: 'Zksync', image: Zksync, token: 'ZK' },
+  {name:'ETH', image:Etherum, token:'Bsc'},
+  { name: 'APT', image: Aptos, token: 'Apt' },
+  { name: 'ARB', image: Arbitrum, token: 'Arb' },
+  { name: 'AVAX', image: Avalanche, token: 'Avax' },
+  { name: 'BSC', image: Bsc, token: 'Bsc' },
+ 
 ];
 
 const ChainDropdown = () => {
@@ -47,15 +44,15 @@ const ChainDropdown = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <button
         onClick={toggleDropdown}
-        className="flex items-center h-10 justify-between w-full px-4 py-2 bg-topbarbutton text-white rounded-lg shadow-md focus:outline-none"
+        className="flex items-center cursor-pointer h-10 justify-between w-full px-4  bg-topbarbutton text-white rounded-lg shadow-md focus:outline-none"
       >
         <div className="flex items-center gap-2">
           <Image src={selected.image} alt={selected.name} width={16} height={16} />
-          <span className="text-sm font-bold">{selected.name} </span>{' '}
-          <span className="text-tiny">{selected.token}</span>
+          <span className="text-sm font-extrabold">{selected.name} </span>{' '}
+          <span className="text-tiny font-bold text-ts">{selected.token}</span>
         </div>
         <Image
           src={Dropdown}
@@ -72,12 +69,12 @@ const ChainDropdown = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
-          className="absolute left-0 mt-2 w-full bg-topbarbutton text-white rounded-lg shadow-lg overflow-hidden text-xs"
+          className="absolute left-0 mt-2 w-full bg-topbarbutton text-white rounded-lg shadow-lg overflow-hidden text-xs z-50"
         >
           {coins.map((coin) => (
             <button
               key={coin.name}
-              className="flex items-center w-full px-4 py-2 hover:bg-white/[6%]"
+              className="flex items-center w-full px-4 py-3 hover:bg-white/[6%]"
               onClick={() => selectChain(coin)}
             >
               <Image src={coin.image} alt={coin.name} width={12} height={12} className="mr-2" />

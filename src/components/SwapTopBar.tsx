@@ -13,7 +13,7 @@ const SwapTopBar = () => {
     <div className="flex justify-center items-center w-full top-0">
       <div className="flex flex-row gap-4 justify-between items-center w-full h-fit p-3 bg-topbar rounded-b-2xl">
         {/* amount */}
-        <div className="flex flex-row justify-between text-sm items-center px-6 bg-topbarbutton rounded-2xl h-12">
+        <div className="flex flex-row justify-between text-sm font-extrabold text-tp items-center px-6 bg-topbarbutton rounded-2xl h-12">
           <div>Your Balance</div>
           <div className="w-52 text-right">$12,876.00</div>
         </div>
